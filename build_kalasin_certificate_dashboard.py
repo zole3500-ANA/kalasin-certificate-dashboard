@@ -677,9 +677,9 @@ def render_html(snapshot):
               <thead>
                 <tr>
                   <th class="unit-col">หน่วยบริการ</th>
-                  <th class="upload-col">อัพโหลด</th>
                   <th class="status-col">สถานะ</th>
                   <th class="file-col">ไฟล์ใบประกาศ</th>
+                  <th class="upload-col">อัพโหลด</th>
                   <th class="time-col">แก้ไขล่าสุด</th>
                 </tr>
               </thead>
@@ -687,9 +687,9 @@ def render_html(snapshot):
                 ${{rows.map(unit => `
                   <tr>
                     <td data-label="หน่วยบริการ"><a href="${{unit.folder_url}}" target="_blank" rel="noopener">${{escapeHtml(unit.name)}}</a></td>
-                    <td data-label="อัพโหลด"><a class="row-upload" href="${{unit.folder_url}}" target="_blank" rel="noopener">อัพโหลดใบประกาศ</a></td>
                     <td data-label="สถานะ">${{statusBadge(unit)}}</td>
                     <td data-label="ไฟล์ใบประกาศ">${{unit.error ? escapeHtml(unit.error) : fileLinks(unit)}}</td>
+                    <td data-label="อัพโหลด"><a class="row-upload" href="${{unit.folder_url}}" target="_blank" rel="noopener">อัพโหลดใบประกาศ</a></td>
                     <td data-label="แก้ไขล่าสุด">${{escapeHtml(unit.folder_modified || "-")}}</td>
                   </tr>
                 `).join("")}}
