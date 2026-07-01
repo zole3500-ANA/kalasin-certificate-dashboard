@@ -454,33 +454,6 @@ def render_html(snapshot):
       font-size: 12px;
       font-weight: 700;
     }}
-    .zero-panel {{
-      margin: 14px 0 18px;
-      border: 1px solid #fecaca;
-      background: #fff7f7;
-      border-radius: 8px;
-      padding: 14px 16px;
-    }}
-    .zero-panel h2 {{
-      margin: 0 0 8px;
-      font-size: 18px;
-      letter-spacing: 0;
-      color: #9f1239;
-    }}
-    .zero-list {{
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }}
-    .zero-chip {{
-      border: 1px solid #fecaca;
-      background: #fff;
-      color: #9f1239;
-      border-radius: 999px;
-      padding: 5px 10px;
-      font-size: 13px;
-      font-weight: 700;
-    }}
     input, select {{
       width: 100%;
       border: 1px solid var(--line);
@@ -690,8 +663,6 @@ def render_html(snapshot):
       <div id="districtSummary" class="district-summary"></div>
     </section>
 
-    <section id="zeroPanel" class="zero-panel" aria-label="อำเภอที่ยังไม่มีการอัปโหลด"></section>
-
     <section class="toolbar" aria-label="ตัวกรอง">
       <input id="searchInput" type="search" placeholder="ค้นหาหน่วยบริการหรือชื่อไฟล์">
       <select id="districtFilter"><option value="all">ทุกอำเภอ</option></select>
@@ -715,7 +686,6 @@ def render_html(snapshot):
     const searchInput = document.getElementById("searchInput");
     const districtsEl = document.getElementById("districts");
     const districtSummaryEl = document.getElementById("districtSummary");
-    const zeroPanelEl = document.getElementById("zeroPanel");
     const statusButtons = [...document.querySelectorAll(".status-button")];
     let selectedStatus = "all";
 
@@ -775,23 +745,6 @@ def render_html(snapshot):
       for (const card of districtSummaryEl.querySelectorAll(".district-card")) {{
         card.addEventListener("click", () => {{
           districtFilter.value = card.dataset.district;
-          render();
-          document.querySelector(".toolbar").scrollIntoView({{ behavior: "smooth", block: "start" }});
-        }});
-      }}
-    }}
-
-    function renderZeroPanel() {{
-      const zeroDistricts = snapshot.districts.filter(district => {{
-        const rows = allUnitsForDistrict(district);
-        return rows.length > 0 && rows.every(unit => !unit.uploaded);
-      }});
-      zeroPanelEl.innerHTML = zeroDistricts.length
-        ? `<h2>อำเภอที่ยัง 0%</h2><div class="zero-list">${{zeroDistricts.map(district => `<button class="zero-chip" type="button" data-district="${{escapeHtml(district)}}">${{escapeHtml(district)}}</button>`).join("")}}</div>`
-        : `<h2>ไม่มีอำเภอที่ยัง 0%</h2><div class="zero-list"><span class="zero-chip">ทุกอำเภอมีการอัปโหลดแล้ว</span></div>`;
-      for (const chip of zeroPanelEl.querySelectorAll("[data-district]")) {{
-        chip.addEventListener("click", () => {{
-          districtFilter.value = chip.dataset.district;
           render();
           document.querySelector(".toolbar").scrollIntoView({{ behavior: "smooth", block: "start" }});
         }});
@@ -880,7 +833,6 @@ def render_html(snapshot):
       }});
     }}
     renderDistrictSummary();
-    renderZeroPanel();
     render();
   </script>
 </body>
