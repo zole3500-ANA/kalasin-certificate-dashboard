@@ -546,9 +546,9 @@ def render_html(snapshot):
       align-items: center;
       gap: 7px;
       border-radius: 999px;
-      padding: 4px 10px;
-      font-size: 12px;
-      font-weight: 700;
+      padding: 6px 12px;
+      font-size: 14px;
+      font-weight: 800;
       white-space: nowrap;
     }}
     .badge::before {{
@@ -585,14 +585,9 @@ def render_html(snapshot):
       background: #dbe7f7;
       color: #36577e;
     }}
-    .uploaded {{ color: var(--green); background: var(--green-bg); }}
-    .pending {{ color: var(--red); background: var(--red-bg); }}
+    .uploaded {{ color: #05603a; background: #dcfae6; border: 1px solid #86efac; }}
+    .pending {{ color: #b42318; background: #ffe4e0; border: 1px solid #fda29b; }}
     .error {{ color: var(--gold); background: #fff7df; }}
-    .followup {{
-      color: #b42318;
-      background: #fff0ee;
-      margin-left: 6px;
-    }}
     a {{ color: var(--blue); text-decoration: none; }}
     a:hover {{ text-decoration: underline; }}
     .file-list {{
@@ -746,7 +741,7 @@ def render_html(snapshot):
       if (unit.error) return '<span class="badge error">ตรวจไม่ได้</span>';
       return unit.uploaded
         ? '<span class="badge uploaded">อัปโหลดแล้ว</span>'
-        : '<span class="badge pending">ยังไม่อัปโหลด</span><span class="badge followup">ต้องติดตาม</span>';
+        : '<span class="badge pending">ยังไม่อัปโหลด</span>';
     }}
 
     function uploadLinkClass(unit) {{
