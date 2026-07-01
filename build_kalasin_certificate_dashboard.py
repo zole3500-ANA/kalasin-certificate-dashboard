@@ -260,16 +260,10 @@ def render_html(snapshot):
       padding: 14px 18px;
       box-shadow: 0 10px 24px rgba(5, 96, 58, 0.12);
     }}
-    .upload-notice strong {{
-      display: block;
-      font-size: clamp(24px, 3vw, 34px);
-      line-height: 1.15;
-      letter-spacing: 0;
-    }}
     .upload-notice span {{
       display: block;
-      margin-top: 6px;
-      font-size: 16px;
+      font-size: clamp(20px, 2.4vw, 28px);
+      font-weight: 700;
       color: #067647;
     }}
     .instruction-panel {{
@@ -337,8 +331,11 @@ def render_html(snapshot):
       background: var(--blue-bg);
     }}
     .metric.updated strong {{
-      font-size: 21px;
+      font-size: 20px;
       line-height: 1.25;
+    }}
+    .updated-line {{
+      white-space: nowrap;
     }}
     .toolbar {{
       display: grid;
@@ -663,7 +660,6 @@ def render_html(snapshot):
       </div>
       <a class="upload-cta" href="{html.escape(snapshot["source"])}" target="_blank" rel="noopener">อัพโหลดใบประกาศ</a>
       <div class="upload-notice" role="status">
-        <strong>อัปโหลดไฟล์สมบูรณ์แล้ว</strong>
         <span>ระบบ Dashboard จะอัปเดตข้อมูลทุก ๆ 30 นาที</span>
       </div>
     </div>
@@ -673,6 +669,7 @@ def render_html(snapshot):
       <h2>คำแนะนำการอัปโหลดใบประกาศ</h2>
       <ol>
         <li>ค้นหาหรือเลือกอำเภอของหน่วยบริการ</li>
+        <li>ตั้งชื่อใบประกาศ เช่น <strong>ชื่อ-สกุล หน่วยบริการ</strong></li>
         <li>กดปุ่ม <strong>อัพโหลดใบประกาศ</strong> ในแถวของหน่วยบริการตนเอง</li>
         <li>อัปโหลดไฟล์ลงใน Google Drive folder ที่เปิดขึ้นมาโดยตรง</li>
         <li>หลังอัปโหลดแล้ว Dashboard จะปรับสถานะในการอัปเดตรอบถัดไป ภายในประมาณ 30 นาที</li>
@@ -684,7 +681,7 @@ def render_html(snapshot):
       <div class="metric done"><span>อัปโหลดแล้ว</span><strong id="uploadedMetric">{uploaded}</strong></div>
       <div class="metric todo"><span>ยังไม่อัปโหลด</span><strong id="pendingMetric">{pending}</strong></div>
       <div class="metric progress-card"><span>ความคืบหน้า</span><strong id="percentMetric">{percent}%</strong><div class="progress"><div id="progressBar"></div></div></div>
-      <div class="metric updated"><span>อัปเดตล่าสุด</span><strong>{safe_updated} น.</strong></div>
+      <div class="metric updated"><span>อัปเดตล่าสุด</span><strong class="updated-line">{safe_updated} น.</strong></div>
     </section>
 
     <section class="district-overview" aria-label="สรุปรายอำเภอ">
