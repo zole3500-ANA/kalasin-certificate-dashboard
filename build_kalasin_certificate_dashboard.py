@@ -272,9 +272,29 @@ def render_html(snapshot):
       font-size: 16px;
       color: #067647;
     }}
+    .instruction-panel {{
+      margin: 18px 0;
+      border: 1px solid #bfdbfe;
+      background: #eff6ff;
+      border-radius: 8px;
+      padding: 16px 18px;
+      color: #17375e;
+    }}
+    .instruction-panel h2 {{
+      margin: 0 0 8px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }}
+    .instruction-panel ol {{
+      margin: 0;
+      padding-left: 22px;
+    }}
+    .instruction-panel li {{
+      margin: 4px 0;
+    }}
     .summary {{
       display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 12px;
       margin: 18px 0;
     }}
@@ -295,6 +315,14 @@ def render_html(snapshot):
       margin-top: 8px;
       font-size: 30px;
       line-height: 1.1;
+    }}
+    .metric.updated {{
+      border-color: #9bb7ff;
+      background: var(--blue-bg);
+    }}
+    .metric.updated strong {{
+      font-size: 21px;
+      line-height: 1.25;
     }}
     .toolbar {{
       display: grid;
@@ -541,11 +569,22 @@ def render_html(snapshot):
     </div>
   </header>
   <main>
+    <section class="instruction-panel" aria-label="คำแนะนำการอัปโหลด">
+      <h2>คำแนะนำการอัปโหลดใบประกาศ</h2>
+      <ol>
+        <li>ค้นหาหรือเลือกอำเภอของหน่วยบริการ</li>
+        <li>กดปุ่ม <strong>อัพโหลดใบประกาศ</strong> ในแถวของหน่วยบริการตนเอง</li>
+        <li>อัปโหลดไฟล์ลงใน Google Drive folder ที่เปิดขึ้นมาโดยตรง</li>
+        <li>หลังอัปโหลดแล้ว Dashboard จะปรับสถานะในการอัปเดตรอบถัดไป ภายในประมาณ 30 นาที</li>
+      </ol>
+    </section>
+
     <section class="summary" aria-label="สรุปภาพรวม">
       <div class="metric"><span>หน่วยบริการทั้งหมด</span><strong id="totalMetric">{total}</strong></div>
       <div class="metric"><span>อัปโหลดแล้ว</span><strong id="uploadedMetric">{uploaded}</strong></div>
       <div class="metric"><span>ยังไม่อัปโหลด</span><strong id="pendingMetric">{pending}</strong></div>
       <div class="metric"><span>ความคืบหน้า</span><strong id="percentMetric">{percent}%</strong><div class="progress"><div id="progressBar"></div></div></div>
+      <div class="metric updated"><span>อัปเดตล่าสุด</span><strong>{safe_updated} น.</strong></div>
     </section>
 
     <section class="district-overview" aria-label="สรุปรายอำเภอ">
