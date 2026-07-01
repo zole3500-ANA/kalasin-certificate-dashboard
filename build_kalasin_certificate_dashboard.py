@@ -316,6 +316,22 @@ def render_html(snapshot):
       font-size: 30px;
       line-height: 1.1;
     }}
+    .metric.total {{
+      border-color: #bfdbfe;
+      background: #eff6ff;
+    }}
+    .metric.done {{
+      border-color: #bbf7d0;
+      background: #f0fdf4;
+    }}
+    .metric.todo {{
+      border-color: #fecaca;
+      background: #fff1f2;
+    }}
+    .metric.progress-card {{
+      border-color: #fde68a;
+      background: #fffbeb;
+    }}
     .metric.updated {{
       border-color: #9bb7ff;
       background: var(--blue-bg);
@@ -330,6 +346,33 @@ def render_html(snapshot):
       gap: 10px;
       align-items: center;
       margin: 18px 0;
+    }}
+    .status-buttons {{
+      display: inline-grid;
+      grid-template-columns: repeat(3, auto);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      background: #fff;
+    }}
+    .status-button {{
+      border: 0;
+      border-right: 1px solid var(--line);
+      background: #fff;
+      color: var(--ink);
+      min-height: 43px;
+      padding: 0 12px;
+      font: inherit;
+      cursor: pointer;
+      white-space: nowrap;
+    }}
+    .status-button:last-child {{
+      border-right: 0;
+    }}
+    .status-button.active {{
+      background: #155eef;
+      color: #fff;
+      font-weight: 700;
     }}
     .district-overview {{
       margin: 18px 0;
@@ -367,6 +410,14 @@ def render_html(snapshot):
       font: inherit;
       cursor: pointer;
     }}
+    .district-card.zero {{
+      border-color: #fecaca;
+      background: #fff7f7;
+    }}
+    .district-card.complete {{
+      border-color: #bbf7d0;
+      background: #f0fdf4;
+    }}
     .district-card:hover {{
       border-color: #9bb7ff;
       background: var(--blue-bg);
@@ -383,7 +434,7 @@ def render_html(snapshot):
       margin-top: 5px;
     }}
     .mini-progress {{
-      height: 7px;
+      height: 11px;
       margin-top: 10px;
       background: #e9edf4;
       border-radius: 999px;
@@ -392,6 +443,43 @@ def render_html(snapshot):
     .mini-progress > div {{
       height: 100%;
       background: var(--green);
+    }}
+    .district-pct {{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 9px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }}
+    .zero-panel {{
+      margin: 14px 0 18px;
+      border: 1px solid #fecaca;
+      background: #fff7f7;
+      border-radius: 8px;
+      padding: 14px 16px;
+    }}
+    .zero-panel h2 {{
+      margin: 0 0 8px;
+      font-size: 18px;
+      letter-spacing: 0;
+      color: #9f1239;
+    }}
+    .zero-list {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }}
+    .zero-chip {{
+      border: 1px solid #fecaca;
+      background: #fff;
+      color: #9f1239;
+      border-radius: 999px;
+      padding: 5px 10px;
+      font-size: 13px;
+      font-weight: 700;
     }}
     input, select {{
       width: 100%;
@@ -446,6 +534,9 @@ def render_html(snapshot):
       background: #fff;
       font-size: 12px;
       font-weight: 700;
+      position: sticky;
+      top: 0;
+      z-index: 2;
     }}
     tr:last-child td {{ border-bottom: 0; }}
     .unit-col {{ width: 32%; }}
@@ -500,6 +591,11 @@ def render_html(snapshot):
     .uploaded {{ color: var(--green); background: var(--green-bg); }}
     .pending {{ color: var(--red); background: var(--red-bg); }}
     .error {{ color: var(--gold); background: #fff7df; }}
+    .followup {{
+      color: #b42318;
+      background: #fff0ee;
+      margin-left: 6px;
+    }}
     a {{ color: var(--blue); text-decoration: none; }}
     a:hover {{ text-decoration: underline; }}
     .file-list {{
@@ -526,10 +622,14 @@ def render_html(snapshot):
       .upload-cta {{ width: 100%; }}
       .summary {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
       .toolbar {{ grid-template-columns: 1fr; }}
+      .status-buttons {{ grid-template-columns: 1fr; }}
+      .status-button {{ border-right: 0; border-bottom: 1px solid var(--line); }}
+      .status-button:last-child {{ border-bottom: 0; }}
       .section-title {{ display: block; }}
       .section-title span {{ display: block; text-align: left; margin-top: 3px; }}
       table, thead, tbody, tr, th, td {{ display: block; }}
       thead {{ display: none; }}
+      th {{ position: static; }}
       tr {{ border-bottom: 1px solid #eef1f6; padding: 8px 0; }}
       tr:last-child {{ border-bottom: 0; }}
       td {{ border-bottom: 0; padding: 6px 12px; }}
@@ -580,10 +680,10 @@ def render_html(snapshot):
     </section>
 
     <section class="summary" aria-label="สรุปภาพรวม">
-      <div class="metric"><span>หน่วยบริการทั้งหมด</span><strong id="totalMetric">{total}</strong></div>
-      <div class="metric"><span>อัปโหลดแล้ว</span><strong id="uploadedMetric">{uploaded}</strong></div>
-      <div class="metric"><span>ยังไม่อัปโหลด</span><strong id="pendingMetric">{pending}</strong></div>
-      <div class="metric"><span>ความคืบหน้า</span><strong id="percentMetric">{percent}%</strong><div class="progress"><div id="progressBar"></div></div></div>
+      <div class="metric total"><span>หน่วยบริการทั้งหมด</span><strong id="totalMetric">{total}</strong></div>
+      <div class="metric done"><span>อัปโหลดแล้ว</span><strong id="uploadedMetric">{uploaded}</strong></div>
+      <div class="metric todo"><span>ยังไม่อัปโหลด</span><strong id="pendingMetric">{pending}</strong></div>
+      <div class="metric progress-card"><span>ความคืบหน้า</span><strong id="percentMetric">{percent}%</strong><div class="progress"><div id="progressBar"></div></div></div>
       <div class="metric updated"><span>อัปเดตล่าสุด</span><strong>{safe_updated} น.</strong></div>
     </section>
 
@@ -595,14 +695,16 @@ def render_html(snapshot):
       <div id="districtSummary" class="district-summary"></div>
     </section>
 
+    <section id="zeroPanel" class="zero-panel" aria-label="อำเภอที่ยังไม่มีการอัปโหลด"></section>
+
     <section class="toolbar" aria-label="ตัวกรอง">
       <input id="searchInput" type="search" placeholder="ค้นหาหน่วยบริการหรือชื่อไฟล์">
       <select id="districtFilter"><option value="all">ทุกอำเภอ</option></select>
-      <select id="statusFilter">
-        <option value="all">ทุกสถานะ</option>
-        <option value="uploaded">อัปโหลดแล้ว</option>
-        <option value="pending">ยังไม่อัปโหลด</option>
-      </select>
+      <div class="status-buttons" role="group" aria-label="ตัวกรองสถานะ">
+        <button class="status-button active" type="button" data-status="all">ทั้งหมด</button>
+        <button class="status-button" type="button" data-status="uploaded">อัปโหลดแล้ว</button>
+        <button class="status-button" type="button" data-status="pending">ยังไม่อัปโหลด</button>
+      </div>
     </section>
 
     <section id="districts"></section>
@@ -618,6 +720,9 @@ def render_html(snapshot):
     const searchInput = document.getElementById("searchInput");
     const districtsEl = document.getElementById("districts");
     const districtSummaryEl = document.getElementById("districtSummary");
+    const zeroPanelEl = document.getElementById("zeroPanel");
+    const statusButtons = [...document.querySelectorAll(".status-button")];
+    let selectedStatus = "all";
 
     for (const district of snapshot.districts) {{
       const option = document.createElement("option");
@@ -644,7 +749,7 @@ def render_html(snapshot):
       if (unit.error) return '<span class="badge error">ตรวจไม่ได้</span>';
       return unit.uploaded
         ? '<span class="badge uploaded">อัปโหลดแล้ว</span>'
-        : '<span class="badge pending">ยังไม่อัปโหลด</span>';
+        : '<span class="badge pending">ยังไม่อัปโหลด</span><span class="badge followup">ต้องติดตาม</span>';
     }}
 
     function uploadLinkClass(unit) {{
@@ -661,10 +766,12 @@ def render_html(snapshot):
         const done = rows.filter(unit => unit.uploaded).length;
         const total = rows.length;
         const pct = total ? Math.round((done / total) * 1000) / 10 : 0;
+        const stateClass = done === 0 ? "zero" : done === total ? "complete" : "";
         return `
-          <button class="district-card" type="button" data-district="${{escapeHtml(district)}}" aria-label="${{escapeHtml(district)}} อัปโหลดแล้ว ${{done}} จาก ${{total}}">
+          <button class="district-card ${{stateClass}}" type="button" data-district="${{escapeHtml(district)}}" aria-label="${{escapeHtml(district)}} อัปโหลดแล้ว ${{done}} จาก ${{total}}">
             <strong>${{escapeHtml(district)}}</strong>
             <span>อัปโหลดแล้ว ${{done}} / ${{total}}</span>
+            <div class="district-pct"><span>${{pct}}%</span><span>${{total - done}} ต้องติดตาม</span></div>
             <div class="mini-progress" aria-hidden="true"><div style="width: ${{pct}}%"></div></div>
           </button>
         `;
@@ -673,6 +780,23 @@ def render_html(snapshot):
       for (const card of districtSummaryEl.querySelectorAll(".district-card")) {{
         card.addEventListener("click", () => {{
           districtFilter.value = card.dataset.district;
+          render();
+          document.querySelector(".toolbar").scrollIntoView({{ behavior: "smooth", block: "start" }});
+        }});
+      }}
+    }}
+
+    function renderZeroPanel() {{
+      const zeroDistricts = snapshot.districts.filter(district => {{
+        const rows = allUnitsForDistrict(district);
+        return rows.length > 0 && rows.every(unit => !unit.uploaded);
+      }});
+      zeroPanelEl.innerHTML = zeroDistricts.length
+        ? `<h2>อำเภอที่ยัง 0%</h2><div class="zero-list">${{zeroDistricts.map(district => `<button class="zero-chip" type="button" data-district="${{escapeHtml(district)}}">${{escapeHtml(district)}}</button>`).join("")}}</div>`
+        : `<h2>ไม่มีอำเภอที่ยัง 0%</h2><div class="zero-list"><span class="zero-chip">ทุกอำเภอมีการอัปโหลดแล้ว</span></div>`;
+      for (const chip of zeroPanelEl.querySelectorAll("[data-district]")) {{
+        chip.addEventListener("click", () => {{
+          districtFilter.value = chip.dataset.district;
           render();
           document.querySelector(".toolbar").scrollIntoView({{ behavior: "smooth", block: "start" }});
         }});
@@ -690,7 +814,6 @@ def render_html(snapshot):
     function render() {{
       const query = searchInput.value.trim().toLowerCase();
       const selectedDistrict = districtFilter.value;
-      const selectedStatus = statusFilter.value;
       const filtered = units.filter(unit => matches(unit, query, selectedDistrict, selectedStatus));
 
       const uploaded = filtered.filter(unit => unit.uploaded).length;
@@ -754,8 +877,15 @@ def render_html(snapshot):
 
     searchInput.addEventListener("input", render);
     districtFilter.addEventListener("change", render);
-    statusFilter.addEventListener("change", render);
+    for (const button of statusButtons) {{
+      button.addEventListener("click", () => {{
+        selectedStatus = button.dataset.status;
+        for (const item of statusButtons) item.classList.toggle("active", item === button);
+        render();
+      }});
+    }}
     renderDistrictSummary();
+    renderZeroPanel();
     render();
   </script>
 </body>
