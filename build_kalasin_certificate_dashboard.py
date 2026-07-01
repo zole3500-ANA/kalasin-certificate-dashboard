@@ -175,7 +175,7 @@ def render_html(snapshot):
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Dashboard อัปโหลดใบประกาศ จังหวัดกาฬสินธุ์</title>
+  <title>Dashboard อัปโหลดใบประกาศ จังหวัดกาฬสินธุ์ เพื่อประกอบการตรวจราชการรอบที่ 2/2569</title>
   <style>
     :root {{
       --ink: #18202a;
@@ -527,7 +527,7 @@ def render_html(snapshot):
   <header>
     <div class="header-layout">
       <div>
-        <h1>Dashboard อัปโหลดใบประกาศ จังหวัดกาฬสินธุ์</h1>
+        <h1>Dashboard อัปโหลดใบประกาศ จังหวัดกาฬสินธุ์ เพื่อประกอบการตรวจราชการรอบที่ 2/2569</h1>
         <div class="subhead">
           <span>ข้อมูลจาก Google Drive</span>
           <span>อัปเดตล่าสุด: {safe_updated} น.</span>
