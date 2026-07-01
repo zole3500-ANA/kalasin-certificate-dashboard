@@ -8,7 +8,7 @@ from pathlib import Path
 
 
 ROOT_FOLDER_ID = "1nWJa_JXYKz-sbqtKktMy1JBpXJMxiVv8"
-OUTPUT_HTML = Path("kalasin-certificate-dashboard.html")
+OUTPUT_HTML = Path("index.html")
 SNAPSHOT_JSON = Path("kalasin-certificate-dashboard-data.json")
 
 DISTRICT_ORDER = [
