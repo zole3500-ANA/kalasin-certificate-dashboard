@@ -420,9 +420,10 @@ def render_html(snapshot):
       font-weight: 700;
     }}
     tr:last-child td {{ border-bottom: 0; }}
-    .unit-col {{ width: 38%; }}
+    .unit-col {{ width: 32%; }}
+    .upload-col {{ width: 150px; }}
     .status-col {{ width: 140px; }}
-    .file-col {{ width: 36%; }}
+    .file-col {{ width: 32%; }}
     .time-col {{ width: 120px; }}
     .badge {{
       display: inline-flex;
@@ -440,6 +441,24 @@ def render_html(snapshot):
       height: 8px;
       border-radius: 50%;
       background: currentColor;
+    }}
+    .row-upload {{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 34px;
+      padding: 7px 11px;
+      border-radius: 8px;
+      background: #155eef;
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+      white-space: nowrap;
+    }}
+    .row-upload:hover {{
+      background: #0f49bd;
+      text-decoration: none;
     }}
     .uploaded {{ color: var(--green); background: var(--green-bg); }}
     .pending {{ color: var(--red); background: var(--red-bg); }}
@@ -658,6 +677,7 @@ def render_html(snapshot):
               <thead>
                 <tr>
                   <th class="unit-col">หน่วยบริการ</th>
+                  <th class="upload-col">อัพโหลด</th>
                   <th class="status-col">สถานะ</th>
                   <th class="file-col">ไฟล์ใบประกาศ</th>
                   <th class="time-col">แก้ไขล่าสุด</th>
@@ -667,6 +687,7 @@ def render_html(snapshot):
                 ${{rows.map(unit => `
                   <tr>
                     <td data-label="หน่วยบริการ"><a href="${{unit.folder_url}}" target="_blank" rel="noopener">${{escapeHtml(unit.name)}}</a></td>
+                    <td data-label="อัพโหลด"><a class="row-upload" href="${{unit.folder_url}}" target="_blank" rel="noopener">อัพโหลดใบประกาศ</a></td>
                     <td data-label="สถานะ">${{statusBadge(unit)}}</td>
                     <td data-label="ไฟล์ใบประกาศ">${{unit.error ? escapeHtml(unit.error) : fileLinks(unit)}}</td>
                     <td data-label="แก้ไขล่าสุด">${{escapeHtml(unit.folder_modified || "-")}}</td>
