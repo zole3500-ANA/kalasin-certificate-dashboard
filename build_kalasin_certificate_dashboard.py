@@ -460,6 +460,15 @@ def render_html(snapshot):
       background: #0f49bd;
       text-decoration: none;
     }}
+    .row-upload.uploaded-link {{
+      background: #e7eefb;
+      color: #52709d;
+      box-shadow: none;
+    }}
+    .row-upload.uploaded-link:hover {{
+      background: #dbe7f7;
+      color: #36577e;
+    }}
     .uploaded {{ color: var(--green); background: var(--green-bg); }}
     .pending {{ color: var(--red); background: var(--red-bg); }}
     .error {{ color: var(--gold); background: #fff7df; }}
@@ -599,6 +608,10 @@ def render_html(snapshot):
         : '<span class="badge pending">ยังไม่อัปโหลด</span>';
     }}
 
+    function uploadLinkClass(unit) {{
+      return unit.uploaded ? "row-upload uploaded-link" : "row-upload";
+    }}
+
     function allUnitsForDistrict(district) {{
       return units.filter(unit => unit.district === district);
     }}
@@ -689,7 +702,7 @@ def render_html(snapshot):
                     <td data-label="หน่วยบริการ"><a href="${{unit.folder_url}}" target="_blank" rel="noopener">${{escapeHtml(unit.name)}}</a></td>
                     <td data-label="สถานะ">${{statusBadge(unit)}}</td>
                     <td data-label="ไฟล์ใบประกาศ">${{unit.error ? escapeHtml(unit.error) : fileLinks(unit)}}</td>
-                    <td data-label="อัพโหลด"><a class="row-upload" href="${{unit.folder_url}}" target="_blank" rel="noopener">อัพโหลดใบประกาศ</a></td>
+                    <td data-label="อัพโหลด"><a class="${{uploadLinkClass(unit)}}" href="${{unit.folder_url}}" target="_blank" rel="noopener">อัพโหลดใบประกาศ</a></td>
                     <td data-label="แก้ไขล่าสุด">${{escapeHtml(unit.folder_modified || "-")}}</td>
                   </tr>
                 `).join("")}}
