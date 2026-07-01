@@ -2,8 +2,8 @@ name: Update dashboard
 
 on:
   schedule:
-    # 00:10 UTC = 07:10 Thailand time.
-    - cron: "10 0 * * *"
+    # Run every 30 minutes. GitHub may delay scheduled runs slightly.
+    - cron: "*/30 * * * *"
   workflow_dispatch:
 
 permissions:
@@ -36,4 +36,3 @@ jobs:
             git commit -m "Update dashboard data"
             git push
           fi
-

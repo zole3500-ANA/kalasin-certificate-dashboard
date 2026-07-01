@@ -251,6 +251,27 @@ def render_html(snapshot):
       outline: 3px solid #9bb7ff;
       outline-offset: 3px;
     }}
+    .upload-notice {{
+      max-width: 760px;
+      border: 2px solid #a7f3d0;
+      background: #ecfdf3;
+      color: #05603a;
+      border-radius: 8px;
+      padding: 14px 18px;
+      box-shadow: 0 10px 24px rgba(5, 96, 58, 0.12);
+    }}
+    .upload-notice strong {{
+      display: block;
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.15;
+      letter-spacing: 0;
+    }}
+    .upload-notice span {{
+      display: block;
+      margin-top: 6px;
+      font-size: 16px;
+      color: #067647;
+    }}
     .summary {{
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -485,6 +506,10 @@ def render_html(snapshot):
         </div>
       </div>
       <a class="upload-cta" href="{html.escape(snapshot["source"])}" target="_blank" rel="noopener">อัพโหลดใบประกาศ</a>
+      <div class="upload-notice" role="status">
+        <strong>อัปโหลดไฟล์สมบูรณ์แล้ว</strong>
+        <span>ระบบ Dashboard จะอัปเดตข้อมูลทุก ๆ 30 นาที</span>
+      </div>
     </div>
   </header>
   <main>
