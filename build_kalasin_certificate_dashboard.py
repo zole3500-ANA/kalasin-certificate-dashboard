@@ -302,7 +302,9 @@ def render_html(snapshot):
     .metric span {{
       color: var(--muted);
       display: block;
-      font-size: 13px;
+      font-size: 16px;
+      font-weight: 800;
+      line-height: 1.25;
     }}
     .metric strong {{
       display: block;
@@ -421,7 +423,8 @@ def render_html(snapshot):
     }}
     .district-card strong {{
       display: block;
-      font-size: 15px;
+      font-size: 20px;
+      font-weight: 800;
       line-height: 1.35;
     }}
     .district-card span {{
