@@ -1,6 +1,6 @@
 {
   "source": "https://drive.google.com/drive/folders/1nWJa_JXYKz-sbqtKktMy1JBpXJMxiVv8",
-  "updated_at": "2026-07-02 16:22:19",
+  "updated_at": "2026-07-02 18:52:31",
   "districts": [
     "อำเภอเมืองกาฬสินธุ์",
     "อำเภอนามน",
@@ -1629,9 +1629,17 @@
       "district": "อำเภอหนองกุงศรี",
       "folder_url": "https://drive.google.com/drive/folders/1hvYgNV9fBgGl2cx9Lncj6ogk1yty2rM5",
       "folder_modified": "Jun 30",
-      "uploaded": false,
-      "file_count": 0,
-      "files": [],
+      "uploaded": true,
+      "file_count": 1,
+      "files": [
+        {
+          "id": "1LBU8mXbuNkor70agNKE3uLj3bb33nvyT",
+          "name": "อภิชัญญา นาชัยฤทธิ์ พยาบาล.jpg",
+          "is_folder": false,
+          "modified": "4:26 AM",
+          "url": "https://drive.google.com/file/d/1LBU8mXbuNkor70agNKE3uLj3bb33nvyT/view"
+        }
+      ],
       "child_folder_count": 0,
       "error": ""
     },
