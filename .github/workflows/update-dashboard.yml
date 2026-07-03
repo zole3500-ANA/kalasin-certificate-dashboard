@@ -2,8 +2,8 @@ name: Update dashboard
 
 on:
   schedule:
-    # Run every 30 minutes. GitHub may delay scheduled runs slightly.
-    - cron: "*/30 * * * *"
+    # Run every 30 minutes while avoiding the crowded :00/:30 slots.
+    - cron: "17,47 * * * *"
   workflow_dispatch:
 
 permissions:
