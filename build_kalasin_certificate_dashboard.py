@@ -1,6 +1,7 @@
 import html
 import json
 import re
+import sys
 import urllib.request
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone, timedelta
@@ -37,9 +38,21 @@ EXCLUDED_UNITS = {
     ("อำเภอเมืองกาฬสินธุ์", "โรงพยาบาลธีรวัฒน์"),
 }
 
+MANUAL_UNITS = [
+    {
+        "district": "อำเภอเมืองกาฬสินธุ์",
+        "name": "ศูนย์สุขภาพชุมชนเมืองโรงพยาบาลกาฬสินธุ์(77738)",
+    },
+]
+
 
 def drive_folder_url(folder_id):
     return f"https://drive.google.com/drive/folders/{folder_id}"
+
+
+def console_safe(value):
+    encoding = sys.stdout.encoding or "utf-8"
+    return str(value).encode(encoding, errors="replace").decode(encoding, errors="replace")
 
 
 def drive_file_url(file_id):
@@ -91,6 +104,16 @@ def district_sort_key(name):
 
 
 def collect_unit_status(unit):
+    if unit.get("manual"):
+        return {
+            **unit,
+            "uploaded": False,
+            "file_count": 0,
+            "files": [],
+            "child_folder_count": 0,
+            "error": "",
+        }
+
     try:
         children = fetch_folder_items(unit["id"])
         files = [item for item in children if not item["is_folder"]]
@@ -128,10 +151,18 @@ def collect_unit_status(unit):
 
 
 def build_snapshot():
-    districts = sorted(fetch_folder_items(ROOT_FOLDER_ID), key=lambda item: district_sort_key(item["name"]))
+    districts = sorted(
+        [
+            item
+            for item in fetch_folder_items(ROOT_FOLDER_ID)
+            if item["is_folder"] and item["name"].startswith("อำเภอ")
+        ],
+        key=lambda item: district_sort_key(item["name"]),
+    )
     units = []
     for district in districts:
-        district_units = fetch_folder_items(district["id"])
+        district_units = [item for item in fetch_folder_items(district["id"]) if item["is_folder"]]
+        unit_names = {unit["name"] for unit in district_units}
         for unit in district_units:
             if (district["name"], unit["name"]) in EXCLUDED_UNITS:
                 continue
@@ -142,6 +173,21 @@ def build_snapshot():
                     "district": district["name"],
                     "folder_url": unit["url"],
                     "folder_modified": unit["modified"],
+                }
+            )
+        for manual_unit in MANUAL_UNITS:
+            if manual_unit["district"] != district["name"]:
+                continue
+            if manual_unit["name"] in unit_names:
+                continue
+            units.append(
+                {
+                    "id": f'manual:{district["name"]}:{manual_unit["name"]}',
+                    "name": manual_unit["name"],
+                    "district": district["name"],
+                    "folder_url": district["url"],
+                    "folder_modified": "-",
+                    "manual": True,
                 }
             )
 
@@ -853,7 +899,7 @@ def main():
     for unit in snapshot["units"]:
         if unit["uploaded"]:
             files = ", ".join(file["name"] for file in unit["files"])
-            print(f'UPLOADED {unit["district"]} | {unit["name"]} | {files}')
+            print(console_safe(f'UPLOADED {unit["district"]} | {unit["name"]} | {files}'))
 
 
 if __name__ == "__main__":
