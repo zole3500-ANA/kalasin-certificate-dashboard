@@ -2,8 +2,8 @@ name: Update dashboard
 
 on:
   schedule:
-    # Run every 30 minutes while avoiding the crowded :00/:30 slots.
-    - cron: "17,47 * * * *"
+    # Run every hour at minute 5 while avoiding the crowded :00 slot.
+    - cron: "5 * * * *"
   workflow_dispatch:
 
 permissions:

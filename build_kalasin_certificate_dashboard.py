@@ -677,7 +677,7 @@ def render_html(snapshot):
       </div>
       <a class="upload-cta" href="{html.escape(snapshot["source"])}" target="_blank" rel="noopener">อัพโหลดใบประกาศ</a>
       <div class="upload-notice" role="status">
-        <span>ระบบ Dashboard จะอัปเดตข้อมูลทุก ๆ 30 นาที</span>
+        <span>ระบบ Dashboard จะอัปเดตข้อมูลทุก ๆ 1 ชั่วโมง</span>
       </div>
     </div>
   </header>
@@ -689,7 +689,7 @@ def render_html(snapshot):
         <li>ตั้งชื่อใบประกาศ เช่น <strong>ชื่อ-สกุล หน่วยบริการ</strong></li>
         <li>กดปุ่ม <strong>อัพโหลดใบประกาศ</strong> ในแถวของหน่วยบริการตนเอง</li>
         <li>อัปโหลดไฟล์ลงใน Google Drive folder ที่เปิดขึ้นมาโดยตรง</li>
-        <li>หลังอัปโหลดแล้ว Dashboard จะปรับสถานะในการอัปเดตรอบถัดไป ภายในประมาณ 30 นาที</li>
+        <li>หลังอัปโหลดแล้ว Dashboard จะปรับสถานะในการอัปเดตรอบถัดไป ภายในประมาณ 1 ชั่วโมง</li>
       </ol>
     </section>
 
