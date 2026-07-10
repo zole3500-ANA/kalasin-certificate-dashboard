@@ -1,20 +1,10 @@
 # Kalasin Certificate Upload Dashboard
 
-Dashboard สำหรับติดตามสถานะการอัปโหลดใบประกาศของหน่วยบริการ จังหวัดกาฬสินธุ์ แยกรายอำเภอ
+Dashboard สำหรับติดตามสถานะการอัปโหลดใบประกาศของหน่วยบริการ จังหวัดกาฬสินธุ์ เพื่อประกอบการตรวจราชการรอบที่ 2/2569
 
-## Files
+- หน้าเว็บ: https://zole3500-ana.github.io/kalasin-certificate-dashboard/
+- ข้อมูลต้นทาง: Google Drive public folder ที่กำหนดใน `build_kalasin_certificate_dashboard.py`
+- อัปเดตอัตโนมัติ: GitHub Actions ทุก 30 นาที ที่นาที `17` และ `47`
 
-- `index.html` - หน้า dashboard พร้อมข้อมูล snapshot ล่าสุด เปิดผ่าน browser หรือ GitHub Pages ได้ทันที
-- `kalasin-certificate-dashboard-data.json` - ข้อมูล snapshot จาก Google Drive ณ เวลาที่สร้าง dashboard
-- `build_kalasin_certificate_dashboard.py` - สคริปต์ดึงข้อมูลจาก Google Drive public folder และสร้าง dashboard ใหม่
-
-## Update Dashboard
-
-รันจากโฟลเดอร์โปรเจกต์หลัก:
-
-```powershell
-python build_kalasin_certificate_dashboard.py
-```
-
-จากนั้น copy `kalasin-certificate-dashboard.html` เป็น `index.html` ใน repo นี้ แล้ว commit/push ขึ้น GitHub อีกครั้ง
+อ่านรายละเอียดสำหรับการใช้งาน/ดูแลระบบต่อได้ที่ [DASHBOARD_GUIDE.md](DASHBOARD_GUIDE.md)
 
