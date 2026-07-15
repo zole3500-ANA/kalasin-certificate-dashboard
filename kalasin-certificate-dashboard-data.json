@@ -1,6 +1,6 @@
 {
   "source": "https://drive.google.com/drive/folders/1nWJa_JXYKz-sbqtKktMy1JBpXJMxiVv8",
-  "updated_at": "2026-07-15 12:36:38",
+  "updated_at": "2026-07-15 15:21:06",
   "districts": [
     "อำเภอเมืองกาฬสินธุ์",
     "อำเภอนามน",
@@ -3254,9 +3254,17 @@
       "district": "อำเภอฆ้องชัย",
       "folder_url": "https://drive.google.com/drive/folders/1W_41_mjyDMHp-JGbkQFz4023okyzF_lK",
       "folder_modified": "Jun 30",
-      "uploaded": false,
-      "file_count": 0,
-      "files": [],
+      "uploaded": true,
+      "file_count": 1,
+      "files": [
+        {
+          "id": "10fqa87mKvvC5o1KI5JjNRC-5OSgBp0fv",
+          "name": "S__2392103.jpg",
+          "is_folder": false,
+          "modified": "2:50 AM",
+          "url": "https://drive.google.com/file/d/10fqa87mKvvC5o1KI5JjNRC-5OSgBp0fv/view"
+        }
+      ],
       "child_folder_count": 0,
       "error": ""
     },
