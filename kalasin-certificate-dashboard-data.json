@@ -1,6 +1,6 @@
 {
   "source": "https://drive.google.com/drive/folders/1nWJa_JXYKz-sbqtKktMy1JBpXJMxiVv8",
-  "updated_at": "2026-07-21 10:13:00",
+  "updated_at": "2026-07-21 13:32:41",
   "districts": [
     "อำเภอเมืองกาฬสินธุ์",
     "อำเภอนามน",
@@ -117,9 +117,17 @@
       "district": "อำเภอเมืองกาฬสินธุ์",
       "folder_url": "https://drive.google.com/drive/folders/15TNhotVdLp8hkRK04Exjb9oWMGT33g_w",
       "folder_modified": "Jun 30",
-      "uploaded": false,
-      "file_count": 0,
-      "files": [],
+      "uploaded": true,
+      "file_count": 1,
+      "files": [
+        {
+          "id": "1o3o5vG3WFW_L5QMCHZtUhcX2QDpNnDEb",
+          "name": "IMG_1835.JPG",
+          "is_folder": false,
+          "modified": "11:21 PM",
+          "url": "https://drive.google.com/file/d/1o3o5vG3WFW_L5QMCHZtUhcX2QDpNnDEb/view"
+        }
+      ],
       "child_folder_count": 0,
       "error": ""
     },
