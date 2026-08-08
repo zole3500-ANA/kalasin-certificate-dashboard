@@ -1,6 +1,6 @@
 {
   "source": "https://drive.google.com/drive/folders/1nWJa_JXYKz-sbqtKktMy1JBpXJMxiVv8",
-  "updated_at": "2026-08-09 01:42:05",
+  "updated_at": "2026-08-09 02:34:14",
   "districts": [
     "อำเภอเมืองกาฬสินธุ์",
     "อำเภอนามน",
@@ -1136,7 +1136,7 @@
       "file_count": 0,
       "files": [],
       "child_folder_count": 0,
-      "error": ""
+      "error": "<urlopen error _ssl.c:993: The handshake operation timed out>"
     },
     {
       "id": "1mGI8rkn7QB7LCkJXKcvFQbNu0y9ZUnCz",
