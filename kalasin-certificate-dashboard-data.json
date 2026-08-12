@@ -1,6 +1,6 @@
 {
   "source": "https://drive.google.com/drive/folders/1nWJa_JXYKz-sbqtKktMy1JBpXJMxiVv8",
-  "updated_at": "2026-08-12 09:12:54",
+  "updated_at": "2026-08-12 11:50:19",
   "districts": [
     "อำเภอเมืองกาฬสินธุ์",
     "อำเภอนามน",
@@ -2345,9 +2345,17 @@
       "district": "อำเภอหนองกุงศรี",
       "folder_url": "https://drive.google.com/drive/folders/1NPCht6oXfy8tidkgebjrJb0NI3gKaFfq",
       "folder_modified": "Jun 30",
-      "uploaded": false,
-      "file_count": 0,
-      "files": [],
+      "uploaded": true,
+      "file_count": 1,
+      "files": [
+        {
+          "id": "13pl9_uvp49ARnJDTGG34UBIQvXA-UIUS",
+          "name": "ใบประกาศวัคซีนกูรู.jpg",
+          "is_folder": false,
+          "modified": "Jul 22",
+          "url": "https://drive.google.com/file/d/13pl9_uvp49ARnJDTGG34UBIQvXA-UIUS/view"
+        }
+      ],
       "child_folder_count": 0,
       "error": ""
     },
