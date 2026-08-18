@@ -1,6 +1,6 @@
 {
   "source": "https://drive.google.com/drive/folders/1nWJa_JXYKz-sbqtKktMy1JBpXJMxiVv8",
-  "updated_at": "2026-08-19 03:28:10",
+  "updated_at": "2026-08-19 04:28:05",
   "districts": [
     "อำเภอเมืองกาฬสินธุ์",
     "อำเภอนามน",
@@ -1626,9 +1626,17 @@
       "district": "อำเภอยางตลาด",
       "folder_url": "https://drive.google.com/drive/folders/1aNyuuGu_97scZi8l8JALb5UpIsqJVRGL",
       "folder_modified": "Jun 30",
-      "uploaded": false,
-      "file_count": 0,
-      "files": [],
+      "uploaded": true,
+      "file_count": 1,
+      "files": [
+        {
+          "id": "1Wi2MIv7qjXYqdLZAg-Y4DPlsUxD3B1z6",
+          "name": "รพ.สต.บ้านโคกสี.jpg",
+          "is_folder": false,
+          "modified": "Jul 7",
+          "url": "https://drive.google.com/file/d/1Wi2MIv7qjXYqdLZAg-Y4DPlsUxD3B1z6/view"
+        }
+      ],
       "child_folder_count": 0,
       "error": ""
     },
