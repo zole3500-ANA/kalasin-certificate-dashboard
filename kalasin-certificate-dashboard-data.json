@@ -1,6 +1,6 @@
 {
   "source": "https://drive.google.com/drive/folders/1nWJa_JXYKz-sbqtKktMy1JBpXJMxiVv8",
-  "updated_at": "2026-09-14 07:50:56",
+  "updated_at": "2026-09-14 12:56:36",
   "districts": [
     "อำเภอเมืองกาฬสินธุ์",
     "อำเภอนามน",
@@ -2245,17 +2245,9 @@
       "district": "อำเภอท่าคันโท",
       "folder_url": "https://drive.google.com/drive/folders/1rqgbzwA7NdkN74NRICl2ixQ0kFGihtZa",
       "folder_modified": "Jun 30",
-      "uploaded": true,
-      "file_count": 1,
-      "files": [
-        {
-          "id": "1R5wuAvSIGoQ6jA0om-SRj-jIT1kyWwAO",
-          "name": "นายกีรติ วรรณพราหมณ์ รพ.สต.บ้านดงกลาง.jpg",
-          "is_folder": false,
-          "modified": "Jul 9",
-          "url": "https://drive.google.com/file/d/1R5wuAvSIGoQ6jA0om-SRj-jIT1kyWwAO/view"
-        }
-      ],
+      "uploaded": false,
+      "file_count": 0,
+      "files": [],
       "child_folder_count": 0,
       "error": ""
     },
